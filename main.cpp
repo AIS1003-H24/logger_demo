@@ -1,5 +1,9 @@
 #include "Simulation.hpp"
 
+#include "MultiLogger.hpp"
+#include "ConsoleLogger.hpp"
+#include "FileLogger.hpp"
+
 int main() {
     Simulation sim;
 

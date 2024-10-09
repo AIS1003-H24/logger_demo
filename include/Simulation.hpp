@@ -1,9 +1,9 @@
-
-
 #ifndef SIMULATION_HPP
 #define SIMULATION_HPP
 
 #include "Logger.hpp"
+
+#include <memory>
 
 class Simulation {
 public:
