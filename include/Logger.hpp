@@ -9,6 +9,8 @@
 class Logger {
 public:
     virtual void log(const std::string &message) = 0;
+
+    virtual ~Logger() = 0;
 };
 
 class ConsoleLogger : public Logger {
@@ -20,7 +22,7 @@ public:
 
 class FileLogger : public Logger {
 public:
-    FileLogger(std::string fileName)
+    explicit FileLogger(const std::string &fileName)
         : out_(fileName) {
     }
 
@@ -32,11 +34,10 @@ private:
     std::ofstream out_;
 };
 
-class MultiLogger: public Logger {
-
+class MultiLogger : public Logger {
 public:
     void log(const std::string &message) override {
-        for (auto& logger : loggers) {
+        for (auto &logger: loggers) {
             logger->log(message);
         }
     }
@@ -46,7 +47,7 @@ public:
     }
 
 private:
-    std::vector<std::unique_ptr<Logger>> loggers;
+    std::vector<std::unique_ptr<Logger> > loggers;
 };
 
 #endif //LOGGER_HPP
